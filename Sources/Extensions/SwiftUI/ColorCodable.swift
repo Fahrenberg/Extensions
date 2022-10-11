@@ -16,14 +16,14 @@ import AppKit
 // added availability
 @available(iOS 14.0, *)
 @available(macOS 11.0, *)
-fileprivate extension Color {
+extension Color: Codable {
     #if os(macOS)
     typealias SystemColor = NSColor
     #else
     typealias SystemColor = UIColor
     #endif
     
-    var colorComponents: (red: CGFloat, green: CGFloat, blue: CGFloat, alpha: CGFloat)? {
+    fileprivate var colorComponents: (red: CGFloat, green: CGFloat, blue: CGFloat, alpha: CGFloat)? {
         var r: CGFloat = 0
         var g: CGFloat = 0
         var b: CGFloat = 0
@@ -42,11 +42,7 @@ fileprivate extension Color {
         
         return (r, g, b, a)
     }
-}
-
-@available(iOS 14.0, *)
-@available(macOS 11.0, *)
-extension Color: Codable {
+    
     enum CodingKeys: String, CodingKey {
         case red, green, blue
     }
@@ -71,16 +67,9 @@ extension Color: Codable {
         try container.encode(colorComponents.green, forKey: .green)
         try container.encode(colorComponents.blue, forKey: .blue)
     }
-}
 
-
-
-// https://gist.github.com/delputnam/2d80e7b4bd9363fd221d131e4cfdbd8f
-@available(iOS 14.0, *)
-@available(macOS 11.0, *)
-public extension Color {
-  
-    func isLight() -> Bool {
+    /// https://gist.github.com/delputnam/2d80e7b4bd9363fd221d131e4cfdbd8f
+    public func isLight() -> Bool {
         // algorithm from: http://www.w3.org/WAI/ER/WD-AERT/#color-contrast
         guard let (r, g, b, _) = self.colorComponents else {
             return true
@@ -92,9 +81,9 @@ public extension Color {
 }
 
 
-public extension Color {
+extension Color {
     // https://stackoverflow.com/a/56894458/808593
-    init(hex: UInt, alpha: Double = 1) {
+     public init(hex: UInt, alpha: Double = 1) {
         self.init(
             .sRGB,
             red: Double((hex >> 16) & 0xff) / 255,

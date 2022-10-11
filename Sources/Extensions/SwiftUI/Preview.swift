@@ -14,7 +14,7 @@ extension ColorScheme  {
 
 @available(macOS 11.0, *)
 
-struct PreviewAllColorScheme<Content: View>: View {
+public struct PreviewAllColorScheme<Content: View>: View {
     /**
         Display Dark and Light Mode Previews as two previews
 
@@ -29,13 +29,13 @@ struct PreviewAllColorScheme<Content: View>: View {
           }
         ````
     */
-    let content: Content
-    init(@ViewBuilder content: @escaping () -> Content) {
+    public let content: Content
+    public init(@ViewBuilder content: @escaping () -> Content) {
         
         self.content = content()
     }
     
-    var body: some View {
+   public var body: some View {
         ForEach(ColorScheme.allCases, id:\.self) { mode in
         content
             .padding()
