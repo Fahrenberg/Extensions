@@ -1,9 +1,7 @@
-//
-//  ColorScheme+Extension.swift
-//  RuKa
-//
-//  Created by Jean-Nicolas on 11.07.22.
-//
+// --------------------------------------------------------------------------------------
+// -------------------------   SwiftUI - Preview - Extensions -----------------------------
+// --------------------------------------------------------------------------------------
+
 
 import SwiftUI
 //
@@ -15,7 +13,22 @@ extension ColorScheme  {
 
 
 @available(macOS 11.0, *)
+
 struct PreviewAllColorScheme<Content: View>: View {
+    /**
+        Display Dark and Light Mode Previews as two previews
+
+        Example:
+        ````
+        struct TemplateOption_Previews: PreviewProvider {
+            static var previews: some View {
+                PreviewAllColorScheme() {
+                    TemplateOption(template: Template())
+                }
+            }
+          }
+        ````
+    */
     let content: Content
     init(@ViewBuilder content: @escaping () -> Content) {
         

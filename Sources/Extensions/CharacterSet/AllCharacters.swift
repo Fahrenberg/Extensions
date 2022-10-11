@@ -1,12 +1,13 @@
-//
-//  Convert CharacterSet into Array of Character
-//  
+// --------------------------------------------------------------------------------------
+// -------------------------   CharacterSet - Extensions -------------------------------
+// --------------------------------------------------------------------------------------
 
 
 import Foundation
 
 
 extension CharacterSet {
+    ///  Convert CharacterSet into Array of Character
     public func allCharacters() -> [Character] {
         var result: [Character] = []
         for plane: UInt8 in 0...16 where self.hasMember(inPlane: plane) {

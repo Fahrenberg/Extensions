@@ -6,12 +6,13 @@
 import Foundation
 
 extension String {
-    /// Check if String can be converted to a number
-    ///
+    /// Check if String can be converted to a number for US locale numbers
     public var isNumber: Bool {
-        let decimalSeparator = UnicodeScalar(Locale.current.decimalSeparator ?? "")!
+        let locale = Locale(identifier: "de_US") // "Fahrenberg" special swiss locale  = de_US
+        
+        let decimalSeparator = UnicodeScalar(locale.decimalSeparator ?? "")!
         let groupingSeparator =
-        UnicodeScalar(Locale.current.groupingSeparator ?? "")!
+        UnicodeScalar(locale.groupingSeparator ?? "")!
         var numberSet = CharacterSet.decimalDigits
         numberSet.insert(decimalSeparator)
         numberSet.insert(groupingSeparator)
@@ -19,4 +20,10 @@ extension String {
         return self.rangeOfCharacter(from: numberSet.inverted) == nil
     }
 
+    /// Clean up parsing string
+   public var removeWhitespaceAndNewLines: String {
+        let components = self.components(separatedBy: .whitespacesAndNewlines)
+        return components.filter { !$0.isEmpty }.joined(separator: " ")
+    }
+    
 }

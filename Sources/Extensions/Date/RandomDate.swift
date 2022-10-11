@@ -1,13 +1,11 @@
-//
-//  File.swift
-//  Transactions
-//
-//  Created by Jean-Nicolas on 07.07.22.
-//
+// --------------------------------------------------------------------------------------
+// -------------------------   Date - randomDate - Extensions ---------------------------
+// --------------------------------------------------------------------------------------
 
 import Foundation
 
 extension Date {
+    /// "Reasonable" random Date between 1994 and 2022.
     public static var randomDate: Date {
         let calendar = Calendar(identifier: .gregorian)
         let month = Int.random(in: 1...12)
