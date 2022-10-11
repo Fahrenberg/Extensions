@@ -1,0 +1,223 @@
+{
+  "builtTestProducts" : [
+    {
+      "binaryPath" : "/Users/JeanNicolas/Library/Mobile Documents/com~apple~CloudDocs/Programmierung/Swift/Toolbox/Extensions/.build/x86_64-apple-macosx/debug/ExtensionsPackageTests.xctest/Contents/MacOS/ExtensionsPackageTests",
+      "packageName" : "Extensions",
+      "productName" : "ExtensionsPackageTests"
+    }
+  ],
+  "copyCommands" : {
+
+  },
+  "swiftCommands" : {
+    "C.Extensions-debug.module" : {
+      "executable" : "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/swiftc",
+      "importPath" : "/Users/JeanNicolas/Library/Mobile Documents/com~apple~CloudDocs/Programmierung/Swift/Toolbox/Extensions/.build/x86_64-apple-macosx/debug",
+      "inputs" : [
+        {
+          "kind" : "file",
+          "name" : "/Users/JeanNicolas/Library/Mobile Documents/com~apple~CloudDocs/Programmierung/Swift/Toolbox/Extensions/Sources/Extensions/CharacterSet/AllCharacters.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/JeanNicolas/Library/Mobile Documents/com~apple~CloudDocs/Programmierung/Swift/Toolbox/Extensions/Sources/Extensions/CharacterSet/RemoveWhitespaceAndNewLines.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/JeanNicolas/Library/Mobile Documents/com~apple~CloudDocs/Programmierung/Swift/Toolbox/Extensions/Sources/Extensions/Global/Extensions.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/JeanNicolas/Library/Mobile Documents/com~apple~CloudDocs/Programmierung/Swift/Toolbox/Extensions/Sources/Extensions/Global/GlobalVariables.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/JeanNicolas/Library/Mobile Documents/com~apple~CloudDocs/Programmierung/Swift/Toolbox/Extensions/Sources/Extensions/String/UnixTime.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/JeanNicolas/Library/Mobile Documents/com~apple~CloudDocs/Programmierung/Swift/Toolbox/Extensions/Sources/Extensions/View/Keyboard+Hide.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/JeanNicolas/Library/Mobile Documents/com~apple~CloudDocs/Programmierung/Swift/Toolbox/Extensions/Sources/Extensions/View/View+Hidden.swift"
+        }
+      ],
+      "isLibrary" : true,
+      "moduleName" : "Extensions",
+      "moduleOutputPath" : "/Users/JeanNicolas/Library/Mobile Documents/com~apple~CloudDocs/Programmierung/Swift/Toolbox/Extensions/.build/x86_64-apple-macosx/debug/Extensions.swiftmodule",
+      "objects" : [
+        "/Users/JeanNicolas/Library/Mobile Documents/com~apple~CloudDocs/Programmierung/Swift/Toolbox/Extensions/.build/x86_64-apple-macosx/debug/Extensions.build/CharacterSet/AllCharacters.swift.o",
+        "/Users/JeanNicolas/Library/Mobile Documents/com~apple~CloudDocs/Programmierung/Swift/Toolbox/Extensions/.build/x86_64-apple-macosx/debug/Extensions.build/CharacterSet/RemoveWhitespaceAndNewLines.swift.o",
+        "/Users/JeanNicolas/Library/Mobile Documents/com~apple~CloudDocs/Programmierung/Swift/Toolbox/Extensions/.build/x86_64-apple-macosx/debug/Extensions.build/Global/Extensions.swift.o",
+        "/Users/JeanNicolas/Library/Mobile Documents/com~apple~CloudDocs/Programmierung/Swift/Toolbox/Extensions/.build/x86_64-apple-macosx/debug/Extensions.build/Global/GlobalVariables.swift.o",
+        "/Users/JeanNicolas/Library/Mobile Documents/com~apple~CloudDocs/Programmierung/Swift/Toolbox/Extensions/.build/x86_64-apple-macosx/debug/Extensions.build/String/UnixTime.swift.o",
+        "/Users/JeanNicolas/Library/Mobile Documents/com~apple~CloudDocs/Programmierung/Swift/Toolbox/Extensions/.build/x86_64-apple-macosx/debug/Extensions.build/View/Keyboard+Hide.swift.o",
+        "/Users/JeanNicolas/Library/Mobile Documents/com~apple~CloudDocs/Programmierung/Swift/Toolbox/Extensions/.build/x86_64-apple-macosx/debug/Extensions.build/View/View+Hidden.swift.o"
+      ],
+      "otherArgs" : [
+        "-target",
+        "x86_64-apple-macosx10.10",
+        "-swift-version",
+        "5",
+        "-enable-batch-mode",
+        "-index-store-path",
+        "/Users/JeanNicolas/Library/Mobile Documents/com~apple~CloudDocs/Programmierung/Swift/Toolbox/Extensions/.build/x86_64-apple-macosx/debug/index/store",
+        "-sdk",
+        "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX11.3.sdk",
+        "-F",
+        "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/Library/Frameworks",
+        "-I",
+        "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/usr/lib",
+        "-L",
+        "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/usr/lib",
+        "-Onone",
+        "-enable-testing",
+        "-g",
+        "-j4",
+        "-DSWIFT_PACKAGE",
+        "-DDEBUG",
+        "-module-cache-path",
+        "/Users/JeanNicolas/Library/Mobile Documents/com~apple~CloudDocs/Programmierung/Swift/Toolbox/Extensions/.build/x86_64-apple-macosx/debug/ModuleCache",
+        "-parseable-output",
+        "-emit-objc-header",
+        "-emit-objc-header-path",
+        "/Users/JeanNicolas/Library/Mobile Documents/com~apple~CloudDocs/Programmierung/Swift/Toolbox/Extensions/.build/x86_64-apple-macosx/debug/Extensions.build/Extensions-Swift.h",
+        "-color-diagnostics"
+      ],
+      "outputs" : [
+        {
+          "kind" : "file",
+          "name" : "/Users/JeanNicolas/Library/Mobile Documents/com~apple~CloudDocs/Programmierung/Swift/Toolbox/Extensions/.build/x86_64-apple-macosx/debug/Extensions.build/CharacterSet/AllCharacters.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/JeanNicolas/Library/Mobile Documents/com~apple~CloudDocs/Programmierung/Swift/Toolbox/Extensions/.build/x86_64-apple-macosx/debug/Extensions.build/CharacterSet/RemoveWhitespaceAndNewLines.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/JeanNicolas/Library/Mobile Documents/com~apple~CloudDocs/Programmierung/Swift/Toolbox/Extensions/.build/x86_64-apple-macosx/debug/Extensions.build/Global/Extensions.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/JeanNicolas/Library/Mobile Documents/com~apple~CloudDocs/Programmierung/Swift/Toolbox/Extensions/.build/x86_64-apple-macosx/debug/Extensions.build/Global/GlobalVariables.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/JeanNicolas/Library/Mobile Documents/com~apple~CloudDocs/Programmierung/Swift/Toolbox/Extensions/.build/x86_64-apple-macosx/debug/Extensions.build/String/UnixTime.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/JeanNicolas/Library/Mobile Documents/com~apple~CloudDocs/Programmierung/Swift/Toolbox/Extensions/.build/x86_64-apple-macosx/debug/Extensions.build/View/Keyboard+Hide.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/JeanNicolas/Library/Mobile Documents/com~apple~CloudDocs/Programmierung/Swift/Toolbox/Extensions/.build/x86_64-apple-macosx/debug/Extensions.build/View/View+Hidden.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/JeanNicolas/Library/Mobile Documents/com~apple~CloudDocs/Programmierung/Swift/Toolbox/Extensions/.build/x86_64-apple-macosx/debug/Extensions.swiftmodule"
+        }
+      ],
+      "sources" : [
+        "/Users/JeanNicolas/Library/Mobile Documents/com~apple~CloudDocs/Programmierung/Swift/Toolbox/Extensions/Sources/Extensions/CharacterSet/AllCharacters.swift",
+        "/Users/JeanNicolas/Library/Mobile Documents/com~apple~CloudDocs/Programmierung/Swift/Toolbox/Extensions/Sources/Extensions/CharacterSet/RemoveWhitespaceAndNewLines.swift",
+        "/Users/JeanNicolas/Library/Mobile Documents/com~apple~CloudDocs/Programmierung/Swift/Toolbox/Extensions/Sources/Extensions/Global/Extensions.swift",
+        "/Users/JeanNicolas/Library/Mobile Documents/com~apple~CloudDocs/Programmierung/Swift/Toolbox/Extensions/Sources/Extensions/Global/GlobalVariables.swift",
+        "/Users/JeanNicolas/Library/Mobile Documents/com~apple~CloudDocs/Programmierung/Swift/Toolbox/Extensions/Sources/Extensions/String/UnixTime.swift",
+        "/Users/JeanNicolas/Library/Mobile Documents/com~apple~CloudDocs/Programmierung/Swift/Toolbox/Extensions/Sources/Extensions/View/Keyboard+Hide.swift",
+        "/Users/JeanNicolas/Library/Mobile Documents/com~apple~CloudDocs/Programmierung/Swift/Toolbox/Extensions/Sources/Extensions/View/View+Hidden.swift"
+      ],
+      "tempsPath" : "/Users/JeanNicolas/Library/Mobile Documents/com~apple~CloudDocs/Programmierung/Swift/Toolbox/Extensions/.build/x86_64-apple-macosx/debug/Extensions.build",
+      "WMO" : false
+    },
+    "C.ExtensionsTests-debug.module" : {
+      "executable" : "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/swiftc",
+      "importPath" : "/Users/JeanNicolas/Library/Mobile Documents/com~apple~CloudDocs/Programmierung/Swift/Toolbox/Extensions/.build/x86_64-apple-macosx/debug",
+      "inputs" : [
+        {
+          "kind" : "file",
+          "name" : "/Users/JeanNicolas/Library/Mobile Documents/com~apple~CloudDocs/Programmierung/Swift/Toolbox/Extensions/Tests/ExtensionsTests/CharacterSetTests.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/JeanNicolas/Library/Mobile Documents/com~apple~CloudDocs/Programmierung/Swift/Toolbox/Extensions/Tests/ExtensionsTests/ExtensionsTests.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/JeanNicolas/Library/Mobile Documents/com~apple~CloudDocs/Programmierung/Swift/Toolbox/Extensions/Tests/ExtensionsTests/GlobalVariableTest.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/JeanNicolas/Library/Mobile Documents/com~apple~CloudDocs/Programmierung/Swift/Toolbox/Extensions/.build/x86_64-apple-macosx/debug/Extensions.swiftmodule"
+        }
+      ],
+      "isLibrary" : true,
+      "moduleName" : "ExtensionsTests",
+      "moduleOutputPath" : "/Users/JeanNicolas/Library/Mobile Documents/com~apple~CloudDocs/Programmierung/Swift/Toolbox/Extensions/.build/x86_64-apple-macosx/debug/ExtensionsTests.swiftmodule",
+      "objects" : [
+        "/Users/JeanNicolas/Library/Mobile Documents/com~apple~CloudDocs/Programmierung/Swift/Toolbox/Extensions/.build/x86_64-apple-macosx/debug/ExtensionsTests.build/CharacterSetTests.swift.o",
+        "/Users/JeanNicolas/Library/Mobile Documents/com~apple~CloudDocs/Programmierung/Swift/Toolbox/Extensions/.build/x86_64-apple-macosx/debug/ExtensionsTests.build/ExtensionsTests.swift.o",
+        "/Users/JeanNicolas/Library/Mobile Documents/com~apple~CloudDocs/Programmierung/Swift/Toolbox/Extensions/.build/x86_64-apple-macosx/debug/ExtensionsTests.build/GlobalVariableTest.swift.o"
+      ],
+      "otherArgs" : [
+        "-target",
+        "x86_64-apple-macosx10.15",
+        "-swift-version",
+        "5",
+        "-enable-batch-mode",
+        "-index-store-path",
+        "/Users/JeanNicolas/Library/Mobile Documents/com~apple~CloudDocs/Programmierung/Swift/Toolbox/Extensions/.build/x86_64-apple-macosx/debug/index/store",
+        "-sdk",
+        "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX11.3.sdk",
+        "-F",
+        "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/Library/Frameworks",
+        "-I",
+        "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/usr/lib",
+        "-L",
+        "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/usr/lib",
+        "-Onone",
+        "-enable-testing",
+        "-g",
+        "-j4",
+        "-DSWIFT_PACKAGE",
+        "-DDEBUG",
+        "-module-cache-path",
+        "/Users/JeanNicolas/Library/Mobile Documents/com~apple~CloudDocs/Programmierung/Swift/Toolbox/Extensions/.build/x86_64-apple-macosx/debug/ModuleCache",
+        "-parseable-output",
+        "-color-diagnostics"
+      ],
+      "outputs" : [
+        {
+          "kind" : "file",
+          "name" : "/Users/JeanNicolas/Library/Mobile Documents/com~apple~CloudDocs/Programmierung/Swift/Toolbox/Extensions/.build/x86_64-apple-macosx/debug/ExtensionsTests.build/CharacterSetTests.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/JeanNicolas/Library/Mobile Documents/com~apple~CloudDocs/Programmierung/Swift/Toolbox/Extensions/.build/x86_64-apple-macosx/debug/ExtensionsTests.build/ExtensionsTests.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/JeanNicolas/Library/Mobile Documents/com~apple~CloudDocs/Programmierung/Swift/Toolbox/Extensions/.build/x86_64-apple-macosx/debug/ExtensionsTests.build/GlobalVariableTest.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/JeanNicolas/Library/Mobile Documents/com~apple~CloudDocs/Programmierung/Swift/Toolbox/Extensions/.build/x86_64-apple-macosx/debug/ExtensionsTests.swiftmodule"
+        }
+      ],
+      "sources" : [
+        "/Users/JeanNicolas/Library/Mobile Documents/com~apple~CloudDocs/Programmierung/Swift/Toolbox/Extensions/Tests/ExtensionsTests/CharacterSetTests.swift",
+        "/Users/JeanNicolas/Library/Mobile Documents/com~apple~CloudDocs/Programmierung/Swift/Toolbox/Extensions/Tests/ExtensionsTests/ExtensionsTests.swift",
+        "/Users/JeanNicolas/Library/Mobile Documents/com~apple~CloudDocs/Programmierung/Swift/Toolbox/Extensions/Tests/ExtensionsTests/GlobalVariableTest.swift"
+      ],
+      "tempsPath" : "/Users/JeanNicolas/Library/Mobile Documents/com~apple~CloudDocs/Programmierung/Swift/Toolbox/Extensions/.build/x86_64-apple-macosx/debug/ExtensionsTests.build",
+      "WMO" : false
+    }
+  },
+  "swiftFrontendCommands" : {
+
+  },
+  "testDiscoveryCommands" : {
+
+  }
+}

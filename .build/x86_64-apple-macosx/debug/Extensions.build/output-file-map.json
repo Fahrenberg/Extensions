@@ -1,0 +1,47 @@
+{
+  "": {
+    "swift-dependencies": "/Users/JeanNicolas/Library/Mobile Documents/com~apple~CloudDocs/Programmierung/Swift/Toolbox/Extensions/.build/x86_64-apple-macosx/debug/Extensions.build/master.swiftdeps"
+  },
+  "/Users/JeanNicolas/Library/Mobile Documents/com~apple~CloudDocs/Programmierung/Swift/Toolbox/Extensions/Sources/Extensions/CharacterSet/AllCharacters.swift": {
+    "dependencies": "/Users/JeanNicolas/Library/Mobile Documents/com~apple~CloudDocs/Programmierung/Swift/Toolbox/Extensions/.build/x86_64-apple-macosx/debug/Extensions.build/CharacterSet/AllCharacters.d",
+    "object": "/Users/JeanNicolas/Library/Mobile Documents/com~apple~CloudDocs/Programmierung/Swift/Toolbox/Extensions/.build/x86_64-apple-macosx/debug/Extensions.build/CharacterSet/AllCharacters.swift.o",
+    "swiftmodule": "/Users/JeanNicolas/Library/Mobile Documents/com~apple~CloudDocs/Programmierung/Swift/Toolbox/Extensions/.build/x86_64-apple-macosx/debug/Extensions.build/CharacterSet/AllCharacters~partial.swiftmodule",
+    "swift-dependencies": "/Users/JeanNicolas/Library/Mobile Documents/com~apple~CloudDocs/Programmierung/Swift/Toolbox/Extensions/.build/x86_64-apple-macosx/debug/Extensions.build/CharacterSet/AllCharacters.swiftdeps"
+  },
+  "/Users/JeanNicolas/Library/Mobile Documents/com~apple~CloudDocs/Programmierung/Swift/Toolbox/Extensions/Sources/Extensions/CharacterSet/RemoveWhitespaceAndNewLines.swift": {
+    "dependencies": "/Users/JeanNicolas/Library/Mobile Documents/com~apple~CloudDocs/Programmierung/Swift/Toolbox/Extensions/.build/x86_64-apple-macosx/debug/Extensions.build/CharacterSet/RemoveWhitespaceAndNewLines.d",
+    "object": "/Users/JeanNicolas/Library/Mobile Documents/com~apple~CloudDocs/Programmierung/Swift/Toolbox/Extensions/.build/x86_64-apple-macosx/debug/Extensions.build/CharacterSet/RemoveWhitespaceAndNewLines.swift.o",
+    "swiftmodule": "/Users/JeanNicolas/Library/Mobile Documents/com~apple~CloudDocs/Programmierung/Swift/Toolbox/Extensions/.build/x86_64-apple-macosx/debug/Extensions.build/CharacterSet/RemoveWhitespaceAndNewLines~partial.swiftmodule",
+    "swift-dependencies": "/Users/JeanNicolas/Library/Mobile Documents/com~apple~CloudDocs/Programmierung/Swift/Toolbox/Extensions/.build/x86_64-apple-macosx/debug/Extensions.build/CharacterSet/RemoveWhitespaceAndNewLines.swiftdeps"
+  },
+  "/Users/JeanNicolas/Library/Mobile Documents/com~apple~CloudDocs/Programmierung/Swift/Toolbox/Extensions/Sources/Extensions/Global/Extensions.swift": {
+    "dependencies": "/Users/JeanNicolas/Library/Mobile Documents/com~apple~CloudDocs/Programmierung/Swift/Toolbox/Extensions/.build/x86_64-apple-macosx/debug/Extensions.build/Global/Extensions.d",
+    "object": "/Users/JeanNicolas/Library/Mobile Documents/com~apple~CloudDocs/Programmierung/Swift/Toolbox/Extensions/.build/x86_64-apple-macosx/debug/Extensions.build/Global/Extensions.swift.o",
+    "swiftmodule": "/Users/JeanNicolas/Library/Mobile Documents/com~apple~CloudDocs/Programmierung/Swift/Toolbox/Extensions/.build/x86_64-apple-macosx/debug/Extensions.build/Global/Extensions~partial.swiftmodule",
+    "swift-dependencies": "/Users/JeanNicolas/Library/Mobile Documents/com~apple~CloudDocs/Programmierung/Swift/Toolbox/Extensions/.build/x86_64-apple-macosx/debug/Extensions.build/Global/Extensions.swiftdeps"
+  },
+  "/Users/JeanNicolas/Library/Mobile Documents/com~apple~CloudDocs/Programmierung/Swift/Toolbox/Extensions/Sources/Extensions/Global/GlobalVariables.swift": {
+    "dependencies": "/Users/JeanNicolas/Library/Mobile Documents/com~apple~CloudDocs/Programmierung/Swift/Toolbox/Extensions/.build/x86_64-apple-macosx/debug/Extensions.build/Global/GlobalVariables.d",
+    "object": "/Users/JeanNicolas/Library/Mobile Documents/com~apple~CloudDocs/Programmierung/Swift/Toolbox/Extensions/.build/x86_64-apple-macosx/debug/Extensions.build/Global/GlobalVariables.swift.o",
+    "swiftmodule": "/Users/JeanNicolas/Library/Mobile Documents/com~apple~CloudDocs/Programmierung/Swift/Toolbox/Extensions/.build/x86_64-apple-macosx/debug/Extensions.build/Global/GlobalVariables~partial.swiftmodule",
+    "swift-dependencies": "/Users/JeanNicolas/Library/Mobile Documents/com~apple~CloudDocs/Programmierung/Swift/Toolbox/Extensions/.build/x86_64-apple-macosx/debug/Extensions.build/Global/GlobalVariables.swiftdeps"
+  },
+  "/Users/JeanNicolas/Library/Mobile Documents/com~apple~CloudDocs/Programmierung/Swift/Toolbox/Extensions/Sources/Extensions/String/UnixTime.swift": {
+    "dependencies": "/Users/JeanNicolas/Library/Mobile Documents/com~apple~CloudDocs/Programmierung/Swift/Toolbox/Extensions/.build/x86_64-apple-macosx/debug/Extensions.build/String/UnixTime.d",
+    "object": "/Users/JeanNicolas/Library/Mobile Documents/com~apple~CloudDocs/Programmierung/Swift/Toolbox/Extensions/.build/x86_64-apple-macosx/debug/Extensions.build/String/UnixTime.swift.o",
+    "swiftmodule": "/Users/JeanNicolas/Library/Mobile Documents/com~apple~CloudDocs/Programmierung/Swift/Toolbox/Extensions/.build/x86_64-apple-macosx/debug/Extensions.build/String/UnixTime~partial.swiftmodule",
+    "swift-dependencies": "/Users/JeanNicolas/Library/Mobile Documents/com~apple~CloudDocs/Programmierung/Swift/Toolbox/Extensions/.build/x86_64-apple-macosx/debug/Extensions.build/String/UnixTime.swiftdeps"
+  },
+  "/Users/JeanNicolas/Library/Mobile Documents/com~apple~CloudDocs/Programmierung/Swift/Toolbox/Extensions/Sources/Extensions/View/Keyboard+Hide.swift": {
+    "dependencies": "/Users/JeanNicolas/Library/Mobile Documents/com~apple~CloudDocs/Programmierung/Swift/Toolbox/Extensions/.build/x86_64-apple-macosx/debug/Extensions.build/View/Keyboard+Hide.d",
+    "object": "/Users/JeanNicolas/Library/Mobile Documents/com~apple~CloudDocs/Programmierung/Swift/Toolbox/Extensions/.build/x86_64-apple-macosx/debug/Extensions.build/View/Keyboard+Hide.swift.o",
+    "swiftmodule": "/Users/JeanNicolas/Library/Mobile Documents/com~apple~CloudDocs/Programmierung/Swift/Toolbox/Extensions/.build/x86_64-apple-macosx/debug/Extensions.build/View/Keyboard+Hide~partial.swiftmodule",
+    "swift-dependencies": "/Users/JeanNicolas/Library/Mobile Documents/com~apple~CloudDocs/Programmierung/Swift/Toolbox/Extensions/.build/x86_64-apple-macosx/debug/Extensions.build/View/Keyboard+Hide.swiftdeps"
+  },
+  "/Users/JeanNicolas/Library/Mobile Documents/com~apple~CloudDocs/Programmierung/Swift/Toolbox/Extensions/Sources/Extensions/View/View+Hidden.swift": {
+    "dependencies": "/Users/JeanNicolas/Library/Mobile Documents/com~apple~CloudDocs/Programmierung/Swift/Toolbox/Extensions/.build/x86_64-apple-macosx/debug/Extensions.build/View/View+Hidden.d",
+    "object": "/Users/JeanNicolas/Library/Mobile Documents/com~apple~CloudDocs/Programmierung/Swift/Toolbox/Extensions/.build/x86_64-apple-macosx/debug/Extensions.build/View/View+Hidden.swift.o",
+    "swiftmodule": "/Users/JeanNicolas/Library/Mobile Documents/com~apple~CloudDocs/Programmierung/Swift/Toolbox/Extensions/.build/x86_64-apple-macosx/debug/Extensions.build/View/View+Hidden~partial.swiftmodule",
+    "swift-dependencies": "/Users/JeanNicolas/Library/Mobile Documents/com~apple~CloudDocs/Programmierung/Swift/Toolbox/Extensions/.build/x86_64-apple-macosx/debug/Extensions.build/View/View+Hidden.swiftdeps"
+  }
+}
