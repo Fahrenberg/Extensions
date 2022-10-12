@@ -8,8 +8,8 @@ extension FileManager {
     /// Checks if a file or folder at the given URL exists and if it is a directory or a file.
     /// - Parameter path: The path to check.
     /// - Returns: A tuple with the first ``Bool`` representing if the path exists and the second ``Bool`` representing if the found is a directory (`true`) or not (`false`).
-    ///  See [https://stackoverflow.com/a/70759674/808593]
-    public static func fileExistsAndIsDirectory(atPath path: String) -> (Bool, Bool) {
+  ///  See [https://stackoverflow.com/a/70759674/808593]
+    static  func fileExistsAndIsDirectory(atPath path: String) -> (fileExist: Bool, isDirectory: Bool) {
       var fileIsDirectory: ObjCBool = false
       let fileExists = FileManager.default.fileExists(atPath: path, isDirectory: &fileIsDirectory)
       return (fileExists, fileIsDirectory.boolValue)
