@@ -1,4 +1,0 @@
-module Extensions {
-    header "/Users/JeanNicolas/Library/Mobile Documents/com~apple~CloudDocs/Programmierung/Swift/Toolbox/Extensions/.build/x86_64-apple-macosx/debug/Extensions.build/Extensions-Swift.h"
-    requires objc
-}
