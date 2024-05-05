@@ -1,5 +1,5 @@
 // --------------------------------------------------------------------------------------
-// -------------------------   Date - ExcelDate - Extensions -------------------------------
+// -------------------------   Date to Excel / Numbers Conversion   ---------------------
 // --------------------------------------------------------------------------------------
 
 
@@ -26,23 +26,32 @@ extension Date {
      
      - Note: [Excel Sheet to get Date Serial Number](https://www.icloud.com/iclouddrive/02dTgEOm0wGXd9o5B9fvVlsZQ#ExcelDateValue).
      - Note: Another bug fix method: start with 1.3.1900 as "first day" = 0  and add 60 days ....
-     */
-    public var excelDateValue: Double {
-        let calendar = Calendar.current
-        let timeZone = calendar.timeZone
-        let excelDateComponent = DateComponents(year: 1900, month: 01, day: 01, hour: 1, minute: 0) // use 1 hour ! not 0
-        var excelDate = calendar.date(from: excelDateComponent)!
-        /* adjust to excel by subtracting 2 days!
-            - 1 day for "beginning of  1.1.1900"
-            - 1 day because of wrong leap day 29.2.1900.
-         */
-        excelDate = calendar.date(byAdding: DateComponents(day:-2), to: excelDate)!
-        let secondsInterval = DateInterval(start: excelDate, end: self).duration
-        /* adjust for time zone */
-        let secondsFromGmt = Double(timeZone.secondsFromGMT())
-        let excelSecondsInterval = secondsInterval + secondsFromGmt
-        let secondsToDay: Double = (60 * 60 * 24)
-        return excelSecondsInterval / secondsToDay
-        
-    }
+     **/
+  public var excelDateSerialNumber: Double {
+      let calendar = Calendar.current
+      let timeZone = calendar.timeZone
+      let excelDateComponent = DateComponents(year: 1900, month: 01, day: 01, hour: 1, minute: 0) // use 1 hour ! not 0
+      var excelDate = calendar.date(from: excelDateComponent)!
+      /* adjust to excel by subtracting 2 days!
+          - 1 day for "beginning of  1.1.1900"
+          - 1 day because of wrong leap day 29.2.1900.
+       */
+      excelDate = calendar.date(byAdding: DateComponents(day:-2), to: excelDate)!
+      let secondsInterval = DateInterval(start: excelDate, end: self).duration
+      /* adjust for time zone */
+      let secondsFromGmt = Double(timeZone.secondsFromGMT())
+      let excelSecondsInterval = secondsInterval + secondsFromGmt
+      let secondsToDay: Double = (60 * 60 * 24)
+      return excelSecondsInterval / secondsToDay
+      
+  }
+
+
+  /// For using in Numbers or Excel format dates as dd.mm.yyyy hh:mm:ss
+  /// Using local time zone
+  ///
+  /// Returns: String
+  public var excelDateString: String {
+    return "not implemented"
+  }
 }
