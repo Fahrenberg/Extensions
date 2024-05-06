@@ -22,6 +22,8 @@
 - defaultDateFormatter
 - timeOnlyDateFormatter
 - listDateFormatter
+- excelDateString
+- excelDateSerialNumber
 
 ## SwiftUI
 
