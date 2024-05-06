@@ -5,7 +5,7 @@
 
 import XCTest
 @testable import Extensions
-final class TestExcelDateString: XCTestCase {
+final class TestExcelDateConversion: XCTestCase {
     
   func testExcelDateSerialNumber() {
     let testDateComponent = DateComponents(year: 2020, month: 10, day: 05,
@@ -19,14 +19,18 @@ final class TestExcelDateString: XCTestCase {
     XCTAssertEqual(resultExcelDateValue, expectedExcelDateValue, accuracy: 0.0001)
   }
 
-
   func testExcelDateString() {
     //  December 9, 1968, at 15:45:25 p.m. Pacific Time Zone
     let iso8601DateFormatter = ISO8601DateFormatter()
-    let testDate = iso8601DateFormatter.date(from: "1968-12-09T15:45:00-08:00")!
+    iso8601DateFormatter.timeZone = .autoupdatingCurrent
+    // assume all ISO8601 are provided UTC GMT
+    let testDate = iso8601DateFormatter.date(from: "1968-12-09T15:45:15Z")!
+    let expectedDateString = "09.12.1968 15:45:15"
 
-    print("TESTDATE:", testDate.description)
-    XCTFail("not yet implemented testDateToISOString")
+    let resultDateString = testDate.excelDateString
+
+    // print("TEST:", testDate.description, expectedDateString, resultDateString)
+    XCTAssertEqual(expectedDateString,resultDateString) 
   }    
     
 }

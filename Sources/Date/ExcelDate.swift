@@ -46,12 +46,24 @@ extension Date {
       
   }
 
+/*
+ISO 8601 is a standard for representing dates and times, but it does not include provisions for daylight saving adjustments. Instead, ISO 8601 typically represents time in Coordinated Universal Time (UTC), which does not observe daylight saving time.
 
-  /// For using in Numbers or Excel format dates as dd.mm.yyyy hh:mm:ss
-  /// Using local time zone
+However, ISO 8601 does allow for the representation of local time with an offset from UTC. For example, "2024-05-06T12:00:00+02:00" represents noon on May 6, 2024, in a time zone with a UTC offset of +02:00. This offset may change due to daylight saving time, but ISO 8601 itself doesn't dictate how daylight saving time should be handled.
+**/
+
+ 
+  /// Converting Date for Numbers or Excel CSV imports, date format is dd.mm.yyyy hh:mm:ss
+  /// Using UTC GMT Time Zone
+  /// No Daylight Saving Time adjustment
   ///
   /// Returns: String
   public var excelDateString: String {
-    return "not implemented"
+    
+      let formatter = DateFormatter()
+      formatter.timeZone = TimeZone.gmt
+      formatter.dateFormat = "dd.MM.yyyy HH:mm:ss"
+      let dateString = formatter.string(from: self)
+      return dateString
   }
 }
