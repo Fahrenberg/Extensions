@@ -1,22 +1,17 @@
 # iOS/macOS - Extensions - Library
 
 
-## Character Set
+# Character Set
 - allCharacters
 - removeWhitespaceAndNewLines
 
-## Core Graphics
+---------------------------------------------------
+# Core Graphics
 - CGSize Extension:
-    - CGSize operators +,-,* returns CGSize
+    Adding CGSize operators +,-,* returns CGSize
 
-## Debugging
-- DragGesture.Value - debugPrintGesture
-
-## String
-- isNumber
-
-## TimeInterval
-- unixTimeToDateString
+---------------------------------------------------
+# Date    
 
 ## DateFormatter "Helpers"
 - defaultDateFormatter
@@ -25,13 +20,33 @@
 - excelDateString
 - excelDateSerialNumber
 
-## SwiftUI
+## TimeInterval
+- unixTimeToDateString
 
-### View
+---------------------------------------------------
+# FileManager
+- directoryExists(directory: URL) ->  Bool
+- documentDirectory() -> URL
+- cloudDirectory() -> URL
+- createDirectory(directory: URL)
+- deleteAllFiles(directoryURL: URL = FileManager.documentDirectory()) -> Int
+- countFiles(directoryURL: URL) -> Int
+- directoryFileSize(directoryURL: URL) -> Int64 
+- fileSize(url: URL) throws -> Int64 
+
+---------------------------------------------------
+# String
+- isNumber
+- removeWhitespaceAndNewLines 
+- String: LocalizedError (throw "any string you want")
+
+---------------------------------------------------
+# SwiftUI
+- DragGesture.Value - debugPrintGesture (Debugging)
 - hideKeyboard (only for *iOS*)
 - isHidden
 
----------------
+---------------------------------------------------
 ### Notes for converting Date into a Excel Date Serial Number.
 
     Date is current time zone adjusted.
