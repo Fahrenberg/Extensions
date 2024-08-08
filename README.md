@@ -46,6 +46,17 @@
 - hideKeyboard (only for *iOS*)
 - isHidden
 
+## Color
+- PlatformColor either UIColor or NSColor to compile or iOS or macOS. 
+- Use HexColor (String) to get or set hex colors
+- Make Color Codable:  init(from: decoder), encode(to: Encoder) 
+
+- Color <-> Hex Converter:
+    - Color(hex:UInt), e.g. Color(hex: 0xffc5d9AA)
+    - Color.intColor returns integer value of the color (RGBA)
+    - Color(hexColor: HexColor) e.g. Color(hexColor: "#ffc5d93f")
+    - Color.hexColor returns HexColor (String) of color in RGBA, alpha = 1.0 if no alpha in Color
+
 ---------------------------------------------------
 ### Notes for converting Date into a Excel Date Serial Number.
 
