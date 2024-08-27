@@ -26,6 +26,7 @@
 ---------------------------------------------------
 # FileManager
 - directoryExists(directory: URL) ->  Bool
+- fileExists(file: URL) -> Bool
 - documentDirectory() -> URL
 - cloudDirectory() -> URL
 - createDirectory(directory: URL)

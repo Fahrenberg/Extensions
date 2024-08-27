@@ -20,6 +20,12 @@ extension FileManager {
         let (fileExist, fileIsDirectory) = FileManager.fileExistsAndIsDirectory(atPath: directory.path)
         return fileExist && fileIsDirectory
     }
+    
+    public static func fileExists(file: URL) -> Bool {
+        let (fileExist, fileIsDirectory) = FileManager.fileExistsAndIsDirectory(atPath: file.path)
+        return fileExist && !fileIsDirectory
+    }
+    
     @available(*, deprecated, renamed: "documentDirectory")
     public static func localDocumentDirectory() -> URL {
         //        #if targetEnvironment(macCatalyst)
@@ -133,5 +139,5 @@ extension FileManager {
 }
 
 extension Logger {
-    fileprivate static let fileManager = Logger(subsystem: subsystem, category: "Database")
+    fileprivate static let fileManager = Logger(subsystem: subsystem, category: "FileManager")
 }
