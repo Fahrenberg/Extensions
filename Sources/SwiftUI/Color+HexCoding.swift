@@ -117,12 +117,12 @@ extension Color {
     
     
     /// Convert Color to HexColor (String)  using RGBA.
-    public var hexColor: HexColor? {
+    public var hexColor: HexColor {
       
         let platformColor = PlatformColor(self)
       
         guard let components = platformColor.cgColor.components, components.count >= 3 else {
-            return nil
+            fatalError("\(String(describing: platformColor))  cannot be split into RGB(A) components")
         }
         
         let r = Float(components[0])

@@ -16,7 +16,7 @@ final class ColorTests: XCTestCase {
         let expectedHexColor: HexColor = "#ffc5d9".uppercased()
         let color = Color(hexColor: expectedHexColor)
         XCTAssertNotNil(color)
-        let resultHexColor = color?.hexColor!
+        let resultHexColor = color!.hexColor
         XCTAssertEqual(expectedHexColor, resultHexColor)
     }
     
@@ -31,7 +31,7 @@ final class ColorTests: XCTestCase {
         let expectedHexColor: HexColor = "#ffc5d93f".uppercased()
         let color = Color(hexColor: expectedHexColor)
         XCTAssertNotNil(color)
-        let resultHexColor = color?.hexColor!
+        let resultHexColor = color!.hexColor
         XCTAssertEqual(expectedHexColor, resultHexColor)
     }
     
