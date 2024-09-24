@@ -9,6 +9,8 @@ import XCTest
 @testable import Extensions
 
 import SwiftUI
+import OSLog
+
 
 final class ColorTests: XCTestCase {
     
@@ -42,5 +44,20 @@ final class ColorTests: XCTestCase {
         let resultIntColor: UInt = color.intColor!
         XCTAssertEqual(expectedIntColor, resultIntColor)
         
+    }
+    
+    
+    func testInvalidHexColorToColor() {
+        let invalidHexColor = "#invalid hex color"
+        let color = Color(hexColor: invalidHexColor)
+        print("Color: \(color?.hexColor ?? "nil")")
+        XCTAssertNil(color)
+    }
+    
+    func testHexColorStringTooLongToColor() {
+        let invalidHexColor = "#AAFF21_invalid hex color" // too long
+        let color = Color(hexColor: invalidHexColor)
+        print("Color: \(color?.hexColor ?? "nil")")
+        XCTAssertNil(color, color?.hexColor ?? "nil")
     }
 }
