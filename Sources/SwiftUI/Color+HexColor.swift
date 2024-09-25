@@ -19,6 +19,48 @@ public typealias HexColor = String
 // Color <-> Hex Converter
 extension Color {
     
+    /// Initializes a Color from a hex string.
+    ///
+    /// The hex string can be in 6-character (RRGGBB) or 8-character (AARRGGBB) format. It uses the `hexColor` extension
+    /// to validate and normalize the input string.
+    ///
+    /// - Parameter hex: A hex color string with or without a `#` prefix.
+    init?(hexColor: String) {
+        // Use the hexColor property to get the normalized hex string.
+        guard let sanitizedHex = hexColor.hexColor else {
+            return nil // Return nil if the hex string is invalid.
+        }
+        
+        // Remove the `#` for further processing
+        let hexSanitized = sanitizedHex.replacingOccurrences(of: "#", with: "")
+        
+        var rgb: UInt64 = 0
+        let scanner = Scanner(string: hexSanitized)
+        guard scanner.scanHexInt64(&rgb) else {
+            return nil
+        }
+        
+        let r, g, b, a: Double
+        if hexSanitized.count == 6 {
+            // RRGGBB (6 characters): No alpha channel, fully opaque.
+            r = Double((rgb & 0xFF0000) >> 16) / 255.0
+            g = Double((rgb & 0x00FF00) >> 8) / 255.0
+            b = Double(rgb & 0x0000FF) / 255.0
+            a = 1.0  // Fully opaque
+        } else if hexSanitized.count == 8 {
+            // AARRGGBB (8 characters): Includes alpha channel.
+            a = Double((rgb & 0xFF000000) >> 24) / 255.0
+            r = Double((rgb & 0x00FF0000) >> 16) / 255.0
+            g = Double((rgb & 0x0000FF00) >> 8) / 255.0
+            b = Double(rgb & 0x000000FF) / 255.0
+        } else {
+            return nil
+        }
+        
+        // Initialize the SwiftUI Color with the RGBA values
+        self.init(red: r, green: g, blue: b, opacity: a)
+    }
+    
     /// Convert hex value (e.g. 0xffc5d9) wiht/without alpha  to Color
     ///
     /// - [Stackoverflow : Use Hex color in SwiftUI](https://stackoverflow.com/a/56894458/808593)
@@ -78,68 +120,64 @@ extension Color {
         }
     }
     
-    /// HexColor: "#RGBA"  or "#RGB" as string with hex values.
+    /// Converts a SwiftUI `Color` to a hex string representation.
     ///
-    /// [From Hex to Color and Back in SwiftUI](https://blog.eidinger.info/from-hex-to-color-and-back-in-swiftui)
-    public init?(hexColor: HexColor) {
-        var hexSanitized = hexColor.trimmingCharacters(in: .whitespacesAndNewlines)
-        hexSanitized = hexSanitized.replacingOccurrences(of: "#", with: "")
+    /// - Returns: A hex string in `#RRGGBB` or `#AARRGGBB` format.
+    public var hexColor: String {
+        let platformColor = UIColor(self) // Or NSColor(self) for macOS
         
-        var rgb: UInt64 = 0
-        
-        var r: CGFloat = 0.0
-        var g: CGFloat = 0.0
-        var b: CGFloat = 0.0
-        var a: CGFloat = 1.0
-        
-        let length = hexSanitized.count
-        
-        guard Scanner(string: hexSanitized).scanHexInt64(&rgb) else { return nil }
-        
-        if length == 6 {
-            r = CGFloat((rgb & 0xFF0000) >> 16) / 255.0
-            g = CGFloat((rgb & 0x00FF00) >> 8) / 255.0
-            b = CGFloat(rgb & 0x0000FF) / 255.0
-            
-        } else if length == 8 {
-            r = CGFloat((rgb & 0xFF000000) >> 24) / 255.0
-            g = CGFloat((rgb & 0x00FF0000) >> 16) / 255.0
-            b = CGFloat((rgb & 0x0000FF00) >> 8) / 255.0
-            a = CGFloat(rgb & 0x000000FF) / 255.0
-            
-        } else {
-            return nil
+        guard let components = platformColor.cgColor.components else {
+            fatalError("Cannot convert color to components")
         }
         
-        self.init(red: r, green: g, blue: b, opacity: a)
-    }
-    
-    
-    
-    /// Convert Color to HexColor (String)  using RGBA.
-    public var hexColor: HexColor {
-      
-        let platformColor = PlatformColor(self)
-      
-        guard let components = platformColor.cgColor.components, components.count >= 3 else {
-            fatalError("\(String(describing: platformColor))  cannot be split into RGB(A) components")
-        }
+        let r = components[0]
+        let g = components[1]
+        let b = components[2]
+        let a = components.count >= 4 ? components[3] : 1.0
         
-        let r = Float(components[0])
-        let g = Float(components[1])
-        let b = Float(components[2])
-        var a = Float(1.0)
-
-        if components.count >= 4 {
-            a = Float(components[3])
-        }
-
-        if a != Float(1.0) {
-            return String(format: "#%02lX%02lX%02lX%02lX", lroundf(r * 255), lroundf(g * 255), lroundf(b * 255), lroundf(a * 255))
-        } else {
-            return String(format: "#%02lX%02lX%02lX", lroundf(r * 255), lroundf(g * 255), lroundf(b * 255))
-        }
+        // Convert to hex string format
+        
+        // Always include alpha in the hex string (AARRGGBB format)
+        return String(format: "#%02X%02X%02X%02X",
+                      Int(round(a * 255)),
+                      Int(round(r * 255)),
+                      Int(round(g * 255)),
+                      Int(round(b * 255)))
+        
     }
 }
 
+extension String {
+    /// Returns a valid formatted HexColor in uppercase or nil if string cannot be converted to a hex color.
+    ///
+    /// - Returns: Uppercase 6 or 8 digit hex color with # prefix, or nil if invalid.
+    var hexColor: String? {
+        var hexSanitized = self.trimmingCharacters(in: .whitespacesAndNewlines)
+        hexSanitized = hexSanitized.replacingOccurrences(of: "#", with: "")
+        
+        // Validating the length (3, 6, or 8 characters)
+        let isValidLength = [3, 6, 8].contains(hexSanitized.count)
+        guard isValidLength else { return nil }
+        
+        // Checking for valid hex characters only
+        let validCharacters = CharacterSet(charactersIn: "0123456789ABCDEFabcdef")
+        let invalidCharsRange = hexSanitized.rangeOfCharacter(from: validCharacters.inverted)
+        guard invalidCharsRange == nil else { return nil }
+        
+        // Normalize 3-digit shorthand to 6-digit hex
+        if hexSanitized.count == 3 {
+            hexSanitized = hexSanitized.map { "\($0)\($0)" }.joined()
+        }
+        
+        // Return in uppercase and with `#` prefix
+        return "#" + hexSanitized.uppercased()
+    }
+    
+    /// Checks if the hex string is a valid hex color (ignores the leading `#`).
+    ///
+    /// - Returns: `true` if valid hex color, otherwise `false`.
+    func isValidHexColor() -> Bool {
+        return self.hexColor != nil
+    }
+}
 

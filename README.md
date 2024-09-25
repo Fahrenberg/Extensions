@@ -1,4 +1,6 @@
-# iOS/macOS - Extensions - Library
+# Swift - Extensions - Library
+## iOS 14, macOS 13 (BigSur)
+##
 
 
 # Character Set
@@ -53,11 +55,14 @@
 - Make Color Codable:  init(from: decoder), encode(to: Encoder) 
 
 - Color <-> Hex Converter:
+    - Color(hexColor: HexColor) e.g. Color(hexColor: "#f1c5d93f")
     - Color(hex:UInt), e.g. Color(hex: 0xffc5d9AA)
-    - Color.intColor returns integer value of the color (RGBA)
-    - Color(hexColor: HexColor) e.g. Color(hexColor: "#ffc5d93f")
-    - Color.hexColor returns HexColor (String) of color in RGBA, alpha = 1.0 if no alpha in Color
+    - Color.intColor returns integer value of the color (RGBA) or nil
+    - Color.hexColor returns HexColor (String) of color in RGBA, always with alpha = FF if no alpha in Color, fatalError if not valid CGColor components (shading etc., not use case for conversion)
 
+- HexColor(String)
+    - hexColor: String? returns a valid formatted HexColor in uppercase or nil if string cannot be converted to a hex color.
+    - func isValidHexColor() -> Bool checks if the hex string is a valid hex color (ignores the leading `#`).
 ---------------------------------------------------
 ### Notes for converting Date into a Excel Date Serial Number.
 
