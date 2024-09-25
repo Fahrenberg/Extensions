@@ -48,7 +48,7 @@
 - isHidden
 
 ## Color
-- PlatformColor either UIColor or NSColor to compile or iOS or macOS. 
+- PlatformColor either UIColor or NSColor to compile for iOS or macOS. 
 - Use HexColor (String) to get or set hex colors
 - Make Color Codable:  init(from: decoder), encode(to: Encoder) 
 

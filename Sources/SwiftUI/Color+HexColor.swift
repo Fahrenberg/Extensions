@@ -25,7 +25,7 @@ extension Color {
     /// to validate and normalize the input string.
     ///
     /// - Parameter hex: A hex color string with or without a `#` prefix.
-    init?(hexColor: String) {
+    public init?(hexColor: String) {
         // Use the hexColor property to get the normalized hex string.
         guard let sanitizedHex = hexColor.hexColor else {
             return nil // Return nil if the hex string is invalid.
@@ -151,7 +151,7 @@ extension String {
     /// Returns a valid formatted HexColor in uppercase or nil if string cannot be converted to a hex color.
     ///
     /// - Returns: Uppercase 6 or 8 digit hex color with # prefix, or nil if invalid.
-    var hexColor: String? {
+    public var hexColor: String? {
         var hexSanitized = self.trimmingCharacters(in: .whitespacesAndNewlines)
         hexSanitized = hexSanitized.replacingOccurrences(of: "#", with: "")
         
@@ -176,7 +176,7 @@ extension String {
     /// Checks if the hex string is a valid hex color (ignores the leading `#`).
     ///
     /// - Returns: `true` if valid hex color, otherwise `false`.
-    func isValidHexColor() -> Bool {
+    public func isValidHexColor() -> Bool {
         return self.hexColor != nil
     }
 }
