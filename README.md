@@ -29,7 +29,7 @@
 - fileExists(file: URL) -> Bool
 - documentDirectory() -> URL
 - cloudDirectory() -> URL
-- createDirectory(directory: URL)
+- createDirectory(directory: URL) throws
 - deleteAllFiles(directoryURL: URL = FileManager.documentDirectory()) -> Int
 - countFiles(directoryURL: URL) -> Int
 - directoryFileSize(directoryURL: URL) -> Int64 

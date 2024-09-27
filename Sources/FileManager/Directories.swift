@@ -50,17 +50,17 @@ extension FileManager {
         
     }
     
-    /// Creates directory if it doen't exits
-    public static func createDirectory(directory: URL) {
+    /// Creates directory if it doen't exits, throws if directory cannot be created, e.g. URL is not valid
+    public static func createDirectory(directory: URL) throws {
          if directoryExists(directory: directory) { return }
          // create new directory
          do {
              try FileManager.default.createDirectory(atPath: directory.path,
                  withIntermediateDirectories: true, attributes: nil)
-             Logger.fileManager.debug("FileManager-Extension - created directory: \(directory.path)")
+             Logger.fileManager.debug("FileManager-Extension - created directory: \(directory.absoluteString)")
              } catch {
-                 Logger.fileManager.fault("FileManager-Extension - cannot create directory: \(directory.path)")
-                 fatalError("FileManager-Extension - createdirectory: \(error.localizedDescription)")
+                 Logger.fileManager.fault("FileManager-Extension - cannot create directory: \(directory.absoluteString), \(error.localizedDescription)")
+                 throw error
              }
      }
     /// Delete all files in directoryURL and returns count of deleted files
