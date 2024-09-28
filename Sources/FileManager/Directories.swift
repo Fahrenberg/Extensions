@@ -50,19 +50,40 @@ extension FileManager {
         
     }
     
-    /// Creates directory if it doen't exits, throws if directory cannot be created, e.g. URL is not valid
-    public static func createDirectory(directory: URL) throws {
-         if directoryExists(directory: directory) { return }
-         // create new directory
-         do {
-             try FileManager.default.createDirectory(atPath: directory.path,
-                 withIntermediateDirectories: true, attributes: nil)
-             Logger.fileManager.debug("FileManager-Extension - created directory: \(directory.absoluteString)")
-             } catch {
-                 Logger.fileManager.fault("FileManager-Extension - cannot create directory: \(directory.absoluteString), \(error.localizedDescription)")
-                 throw error
-             }
-     }
+    /// Creates a directory at the specified URL if it does not exist.
+    /// - Note: This function is deprecated and will be removed in future releases.
+    ///         Use `createDirectory(directory:) throws` instead to handle errors gracefully.
+    @available(*, deprecated, message: "This function is deprecated. Use `createDirectory(at directory:) throws` instead.")
+    public static func createDirectory(directory: URL) {
+        if directoryExists(directory: directory) { return }
+        // create new directory
+        do {
+            try FileManager.default.createDirectory(atPath: directory.path,
+                withIntermediateDirectories: true, attributes: nil)
+            Logger.fileManager.debug("FileManager-Extension - created directory: \(directory.path)")
+        } catch {
+            Logger.fileManager.fault("FileManager-Extension - cannot create directory: \(directory.path)")
+            fatalError("FileManager-Extension - createdirectory: \(error.localizedDescription)")
+        }
+    }
+
+    
+    
+    /// Creates a directory at the specified URL if it does not exist.
+    /// - Parameter directory: The URL of the directory to create.
+    /// - Throws: An error if the directory could not be created, such as when the URL is invalid.
+    public static func createDirectory(at directory: URL) throws {
+        guard !directoryExists(directory: directory) else { return }
+
+        do {
+            try FileManager.default.createDirectory(at: directory, withIntermediateDirectories: true, attributes: nil)
+            Logger.fileManager.debug("FileManager-Extension - created directory: \(directory.absoluteString)")
+        } catch {
+            Logger.fileManager.fault("FileManager-Extension - cannot create directory: \(directory.absoluteString), \(error.localizedDescription)")
+            throw error
+        }
+    }
+
     /// Delete all files in directoryURL and returns count of deleted files
     ///
     /// Default directory is documentDirectory()
@@ -141,3 +162,5 @@ extension FileManager {
 extension Logger {
     fileprivate static let fileManager = Logger(subsystem: subsystem, category: "FileManager")
 }
+
+

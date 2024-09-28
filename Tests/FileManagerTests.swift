@@ -52,18 +52,30 @@ final class FileManagerTests: XCTestCase {
         let fm = FileManager()
         let newDirectory = fm.temporaryDirectory.appendingPathComponent("ValidTestDirectory")
         Logger.test.info("new directory: \(newDirectory.absoluteString)")
-        XCTAssertNotNil(try? FileManager.createDirectory(directory: newDirectory))
+        XCTAssertNotNil(try? FileManager.createDirectory(at: newDirectory))
     }
     
     func testCreateInValidDirectory() throws {
         let newDirectory = URL(string: "file://io.d")!
         Logger.test.info("invalid directory: \(newDirectory.absoluteString)")
-        XCTAssertNil(try? FileManager.createDirectory(directory: newDirectory))
+        XCTAssertNil(try? FileManager.createDirectory(at: newDirectory))
     }
     
+    
+    func testCreateDirectoryDepreciated() throws {
+        let fm = FileManager()
+        let newValidDirectory = fm.temporaryDirectory.appendingPathComponent("ValidTestDirectory")
+        FileManager.createDirectory(directory: newValidDirectory)
+        XCTAssertTrue(FileManager.directoryExists(directory: newValidDirectory))
+        let newInvalidDirectory = URL(string: "file://io.d")!
+        Logger.test.info("invalid directory: \(newInvalidDirectory.absoluteString)")
+        throw XCTSkip("Crashing test for invalid directory.")
+        FileManager.createDirectory(directory: newInvalidDirectory)
+    }
 }
 
 
 extension Logger {
     fileprivate static let test = Logger(subsystem: subsystem, category: "FileManagerTests")
 }
+
