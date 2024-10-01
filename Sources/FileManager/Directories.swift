@@ -28,13 +28,8 @@ extension FileManager {
     
     @available(*, deprecated, renamed: "documentDirectory")
     public static func localDocumentDirectory() -> URL {
-        //        #if targetEnvironment(macCatalyst)
-        //        let directory = URL(fileURLWithPath: NSHomeDirectory())
-        //        #else
         let directory = FileManager.documentDirectory()
-        //        #endif
-        
-        print("LocalStorageController ImagePickers FileManager localDocumentDirectory: ", directory.path )
+        Logger.fileManager.info("FileManager localDocumentDirectory(depreciated) directory: \(directory.path)")
         return directory
     }
     
