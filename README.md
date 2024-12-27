@@ -34,7 +34,11 @@
 - countFiles(directoryURL: URL) -> Int
 - directoryFileSize(directoryURL: URL) -> Int64 
 - fileSize(url: URL) throws -> Int64 
-
+---------------------------------------------------
+# ByteCountFormatter
+Conversion of Int, Int64, UInt64 to String formatted to kB, MB
+- Int.outputKBytes: String 
+- Int.outputMBytes: String
 ---------------------------------------------------
 # String
 - isNumber
