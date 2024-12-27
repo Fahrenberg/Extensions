@@ -6,8 +6,8 @@
 //
 import Foundation
 
-extension Int64 {
-    var outputKBytes: String {
+public extension Int64 {
+     var outputKBytes: String {
         let formatter = ByteCountFormatter()
         formatter.allowedUnits = .useKB
         formatter.countStyle = .file
@@ -27,7 +27,7 @@ extension Int64 {
     
 }
 
-extension Int {
+public extension Int {
     var outputKBytes: String {
         let bytes = Int64(self)
         return bytes.outputKBytes
@@ -39,7 +39,7 @@ extension Int {
     }
 }
 
-extension UInt64 {
+public extension UInt64 {
     var outputKBytes: String {
         let bytes = Int64(self)
         return bytes.outputKBytes
