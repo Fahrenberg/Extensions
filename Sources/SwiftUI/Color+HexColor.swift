@@ -124,8 +124,11 @@ extension Color {
     ///
     /// - Returns: A hex string in `#RRGGBB` or `#AARRGGBB` format.
     public var hexColor: String {
+    #if canImport(UIKit)
         let platformColor = UIColor(self) // Or NSColor(self) for macOS
-        
+    #elseif canImport(AppKit)
+        let platformColor = NSColor(self)
+    #endif
         guard let components = platformColor.cgColor.components else {
             fatalError("Cannot convert color to components")
         }
