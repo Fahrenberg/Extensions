@@ -1,5 +1,5 @@
 # Swift - Extensions - Library
-## iOS 14, macOS 13 (BigSur)
+## iOS 14, macOS 11 (BigSur)
 
 # Character Set
 - allCharacters
