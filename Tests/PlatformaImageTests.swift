@@ -15,9 +15,9 @@ import OSLog
 // Testing PlatformColor Extensions
 final class PlatformImageTests: XCTestCase {
     func testWritePlatformImageToTempDisk() throws {
-        let testImageType = ImageType.small
+        let testImageType = TestPlatformImageType.small
         let imageFileName = testImageType.rawValue + ".bmp"
-        let image = try XCTUnwrap(TestImage.image(size: testImageType))
+        let image = try XCTUnwrap(TestPlatformImage.image(size: testImageType))
         let tmpDir = try image.tempDirectory()
         FileManager.deleteAllFiles(directoryURL: tmpDir)
         let url = try image.writeToDisk(filename: imageFileName)
@@ -29,12 +29,12 @@ final class PlatformImageTests: XCTestCase {
 }
 
 
-enum ImageType: String {
+enum TestPlatformImageType: String {
     case small, small_center
 }
 
-struct TestImage {
-    static func image(size type: ImageType) -> PlatformImage? {
+struct TestPlatformImage {
+    static func image(size type: TestPlatformImageType) -> PlatformImage? {
         let bundle = Bundle.module
         guard let imageURL = bundle.url(forResource: type.rawValue, withExtension: "bmp") else {
             return nil
