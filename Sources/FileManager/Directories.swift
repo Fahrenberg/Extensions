@@ -83,6 +83,7 @@ extension FileManager {
     ///
     /// Default directory is documentDirectory()
     ///
+    @discardableResult
     public static func deleteAllFiles(directoryURL: URL = FileManager.documentDirectory()) -> Int {
         let fm = FileManager()
         do {
