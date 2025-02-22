@@ -93,6 +93,8 @@ Conversion of Int, Int64, UInt64 to String formatted to kB, MB
 # PlatformImage
 - `PlatformImage` device independent color, either UIImage (UIKit, iOS)  NSImage(AppKit, macOS).
   
+- `func writeToDisk(filename: String) throws -> URL` writes PlatformImage to temporary folder.
+
 ---------------------------------------------------
 # SwiftUI
 - DragGesture.Value - debugPrintGesture (Debugging)
