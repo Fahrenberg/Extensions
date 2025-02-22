@@ -11,8 +11,8 @@ import XCTest
 import SwiftUI
 import OSLog
 
-// Testing Color extension (SwiftUI)
-final class ColorTests: XCTestCase {
+// Testing PlatformColor Extensions
+final class PlatformColorTests: XCTestCase {
     
     func testInvalidHexColorToColor() {
         let expectedHexColor: HexColor = "#12345Z"
@@ -57,7 +57,7 @@ final class ColorTests: XCTestCase {
 
 
 // Testing HexColor (String) extension
-class HexColorTests: XCTestCase {
+class PlatformColorHexTests: XCTestCase {
 
     func testHexColorValidation() {
         // Test: only # or empty string -> false
