@@ -14,14 +14,21 @@ import OSLog
 
 // Testing PlatformColor Extensions
 final class PlatformImageTests: XCTestCase {
+    
+    override func setUpWithError() throws {
+        let tmpDir = try PlatformImage.tempDirectory()
+        FileManager.deleteAllFiles(directoryURL: tmpDir)  // reset
+    }
+    
     func testWritePlatformImageToTempDisk() throws {
-        let testImageType = TestPlatformImageType.small
+        let testImageType = TestPlatformImageType.small_center
         let imageFileName = testImageType.rawValue + ".bmp"
+        
         let image = try XCTUnwrap(TestPlatformImage.image(size: testImageType))
-        let tmpDir = try image.tempDirectory()
-        FileManager.deleteAllFiles(directoryURL: tmpDir)
+        
         let url = try image.writeToDisk(filename: imageFileName)
         XCTAssertTrue(FileManager.fileExists(file: url))
+
         let imageSize = try XCTUnwrap(image.pngData())
         let resultImageData = try Data(contentsOf: url)
         XCTAssertEqual(resultImageData.count, imageSize.count)

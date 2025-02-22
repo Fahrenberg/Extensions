@@ -8,13 +8,16 @@ import Foundation
 import OSLog
 
 extension PlatformImage {
-    /// Writes PlatformImage to temporary directory als PNG file
+    /// Convencience function to write PlatformImage to temporary directory als PNG file
+    ///
+    /// Use URL to get file. Discardable when only log needed for testing.
+    ///
     @discardableResult
     public func writeToDisk(filename: String) throws -> URL {
-        let testDir = try self.tempDirectory()
+        let testDir = try PlatformImage.tempDirectory()
         let fileURL: URL
         // write image to disk for preview
-        if #available(iOS 16.0, *) {
+        if #available(iOS 16.0, macOS 13.0, *)  {
             fileURL = testDir.appending(path: "\(filename)")
         } else {
             fileURL = testDir.appendingPathComponent("\(filename)")
@@ -27,10 +30,10 @@ extension PlatformImage {
         return fileURL
     }
     
-    func tempDirectory() throws -> URL {
+    static func tempDirectory() throws -> URL {
         let testDir: URL
         let subDirPath = Bundle.main.bundleIdentifier ?? "main"
-        if #available(iOS 16.0, *) {
+        if #available(iOS 16.0, macOS 13.0, *) {
             testDir = FileManager().temporaryDirectory.appending(path: subDirPath)
         } else {
             testDir = FileManager().temporaryDirectory.appendingPathComponent(subDirPath)
