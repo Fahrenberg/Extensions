@@ -11,7 +11,7 @@ import SwiftUI
 @available(iOS 14.0, *)
 @available(macOS 11.0, *)
 extension Color: Codable {
-    fileprivate var colorComponents: (red: CGFloat, green: CGFloat, blue: CGFloat, alpha: CGFloat)? {
+     var colorComponents: (red: CGFloat, green: CGFloat, blue: CGFloat, alpha: CGFloat)? {
         var r: CGFloat = 0
         var g: CGFloat = 0
         var b: CGFloat = 0
@@ -56,17 +56,3 @@ extension Color: Codable {
         try container.encode(colorComponents.blue, forKey: .blue)
     }
 }
-
-extension Color {
-    /// https://gist.github.com/delputnam/2d80e7b4bd9363fd221d131e4cfdbd8f
-    public func isLight() -> Bool {
-        // algorithm from: http://www.w3.org/WAI/ER/WD-AERT/#color-contrast
-        guard let (r, g, b, _) = self.colorComponents else {
-            return true
-        }
-        
-        let brightness = ((r * 299) + (g * 587) + (b * 114)) / 1_000
-        return brightness >= 0.5
-    }
-}
-

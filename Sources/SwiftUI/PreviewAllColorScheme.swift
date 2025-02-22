@@ -2,18 +2,9 @@
 // -------------------------   SwiftUI - Preview - Extensions -----------------------------
 // --------------------------------------------------------------------------------------
 
-
 import SwiftUI
-//
-extension ColorScheme  {
-    public var description: String {
-        return self == .light ? "Light" : "Dark"
-    }
-}
-
 
 @available(macOS 11.0, *)
-
 public struct PreviewAllColorScheme<Content: View>: View {
     /**
         Display Dark and Light Mode Previews as two previews
