@@ -74,13 +74,8 @@ Conversion of Int, Int64, UInt64 to String formatted to kB, MB
 - String: LocalizedError (throw "any string you want")
 
 ---------------------------------------------------
-# SwiftUI
-- DragGesture.Value - debugPrintGesture (Debugging)
-- hideKeyboard (only for *iOS*)
-- isHidden
-
-## Color
-- PlatformColor either UIColor or NSColor to compile for iOS or macOS. 
+# PlatformColor
+- `PlatformColor` device independent color, either UIColor (UIKit, iOS)  NSColor (AppKit, macOS).
 - Use HexColor (String) to get or set hex colors
 - Make Color Codable:  init(from: decoder), encode(to: Encoder) 
 
@@ -93,3 +88,14 @@ Conversion of Int, Int64, UInt64 to String formatted to kB, MB
 - HexColor(String)
     - hexColor: String? returns a valid formatted HexColor in uppercase or nil if string cannot be converted to a hex color.
     - func isValidHexColor() -> Bool checks if the hex string is a valid hex color (ignores the leading `#`).
+   
+---------------------------------------------------
+# PlatformImage
+  
+  
+---------------------------------------------------
+# SwiftUI
+- DragGesture.Value - debugPrintGesture (Debugging)
+- hideKeyboard (only for *iOS*)
+- isHidden
+
