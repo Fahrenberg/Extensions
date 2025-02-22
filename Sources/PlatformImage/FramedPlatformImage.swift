@@ -84,12 +84,50 @@ extension PlatformImage {
         
         // Unlock focus to finalize the drawing
         imageWithFrame.unlockFocus()
-        
 #else
         fatalError("Unsupported platform")
 #endif
-        
         return imageWithFrame
     }
     
+    /// Returns a new image with all transparent pixels replaced by the specified background color.
+    /// - Parameter frameColor: The color to use for the transparent frame background (default is lightGray).
+    /// - Returns: A new PlatformImage with a solid background color.
+    public func fillFrame(frameColor: PlatformColor = .lightGray)  -> PlatformImage {
+#if canImport(UIKit)
+        let rect = CGRect(origin: .zero, size: self.size)
+        
+        // Use UIGraphicsImageRenderer to create a new image context.
+        let renderer = UIGraphicsImageRenderer(size: self.size)
+        return renderer.image { context in
+            // Fill the background with the specified color.
+            frameColor.setFill()
+            context.fill(rect)
+            
+            // Draw the original image over the background.
+            self.draw(in: rect)
+        }
+        
+#elseif canImport(AppKit)
+        let fillImage = PlatformImage(size: self.size)
+        let rect = NSRect(origin: .zero, size: self.size)
+        
+        fillImage.lockFocus()
+        
+        // Fill the background with the specified color.
+        frameColor.setFill()
+        NSBezierPath(rect: rect).fill()
+        
+        // Draw the original image over the background using the source-over compositing operation.
+        self.draw(in: rect,
+                  from: NSRect(origin: .zero, size: self.size),
+                  operation: .sourceOver,
+                  fraction: 1.0)
+        
+        fillImage.unlockFocus()
+        return fillImage
+#else
+        fatalError("Unsupported platform")
+#endif
+    }
 }

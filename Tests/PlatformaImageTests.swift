@@ -49,11 +49,30 @@ final class PlatformImageTests: XCTestCase {
         XCTAssertEqual(framedImage.pngData()?.count, expectedImage.pngData()?.count)
 #endif
     }
+    
+    
+    func testWritePlatformImageFilled() throws {
+        let testImageType = TestPlatformImageType.small_center
+        let imageFileName = testImageType.rawValue + ".bmp"
+        
+        let image = try XCTUnwrap(TestPlatformImage.image(size: testImageType))
+        let fillImage = image.fillFrame()
+        try fillImage.writeToDisk(filename: imageFileName)
+        
+//        let expectedImage =  try XCTUnwrap(TestPlatformImage.image(size: .small_center_filled))
+#if canImport(UIKit)
+        XCTAssertEqual(fillImage.pngData()?.count, 478114) // change test using [pixel hash](https://chatgpt.com/share/67ba33b0-0fb8-8008-b709-bcfba805557f)
+#elseif canImport(AppKit)
+        XCTAssertEqual(fillImage.pngData()?.count, 50770)
+#endif
+    }
+    
+    
 }
 
 
 enum TestPlatformImageType: String {
-    case small, small_center, small_center_framed
+    case small, small_center, small_center_framed, small_center_filled
 }
 
 struct TestPlatformImage {
