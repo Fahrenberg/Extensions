@@ -6,7 +6,7 @@ import XCTest
 @testable import Extensions
 
 
-final class CoreGraphicsTest: XCTestCase {
+final class CoreGraphicsArithmeticTest: XCTestCase {
     
     func testCGSizeAddition() {
         let left = CGSize(width: 20, height: 30)
