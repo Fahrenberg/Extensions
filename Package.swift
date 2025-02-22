@@ -19,7 +19,10 @@ let package = Package(
         ),
         .testTarget(
             name: "ExtensionsTests",
-            dependencies: ["Extensions"]
+            dependencies: ["Extensions"],
+            resources: [
+                .process("TestRessources")
+            ]
         )
     ]
 )
