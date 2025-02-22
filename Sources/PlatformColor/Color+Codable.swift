@@ -6,20 +6,6 @@
 import Foundation
 import SwiftUI
 
-
-// Color for macOS and iOS
-#if canImport(UIKit)
-import UIKit
-public typealias PlatformColor = UIColor
-#elseif canImport(AppKit)
-import AppKit
-public typealias PlatformColor = NSColor
-#endif
-
-
-
-// MARK: -----------------------------------------------------------------------
-
 // http://brunowernimont.me/howtos/make-swiftui-color-codable
 // added availability
 @available(iOS 14.0, *)
