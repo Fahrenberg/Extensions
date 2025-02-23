@@ -28,7 +28,7 @@
 #endif
 
 extension PlatformImage {
-    var sizeDescription: String {
+    public var sizeDescription: String {
         let width = Int(self.size.width)
         let height = Int(self.size.height)
         return "w:\(width) x h:\(height)"
