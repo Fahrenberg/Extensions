@@ -76,14 +76,14 @@ Conversion of Int, Int64, UInt64 to String formatted to kB, MB
 ---------------------------------------------------
 # PlatformColor
 - `PlatformColor` device independent color, either UIColor (UIKit, iOS)  NSColor (AppKit, macOS).
-- Use HexColor (String) to get or set hex colors
-- Make Color Codable:  init(from: decoder), encode(to: Encoder) 
+- Use HexColor (String) to get or set hex colors.
+- Make Color Codable:  init(from: decoder), encode(to: Encoder).
 
 - Color <-> Hex Converter:
-    - Color(hexColor: HexColor) e.g. Color(hexColor: "#f1c5d93f")
-    - Color(hex:UInt), e.g. Color(hex: 0xffc5d9AA)
-    - Color.intColor returns integer value of the color (RGBA) or nil
-    - Color.hexColor returns HexColor (String) of color in RGBA, always with alpha = FF if no alpha in Color, fatalError if not valid CGColor components (shading etc., not use case for conversion)
+    - Color(hexColor: HexColor) e.g. Color(hexColor: "#f1c5d93f").
+    - Color(hex:UInt), e.g. Color(hex: 0xffc5d9AA).
+    - Color.intColor returns integer value of the color (RGBA) or nil.
+    - Color.hexColor returns HexColor (String) of color in RGBA, always with alpha = FF if no alpha in Color. FatalError if not valid CGColor components (shading etc., not use case for conversion).
 
 - HexColor(String)
     - hexColor: String? returns a valid formatted HexColor in uppercase or nil if string cannot be converted to a hex color.
@@ -92,8 +92,10 @@ Conversion of Int, Int64, UInt64 to String formatted to kB, MB
 ---------------------------------------------------
 # PlatformImage
 - `PlatformImage` device independent color, either UIImage (UIKit, iOS)  NSImage(AppKit, macOS).
-  
-- `func writeToDisk(filename: String) throws -> URL` writes PlatformImage to temporary folder.
+- `var sizeDescription: String` returns formatted size of image (w: x h:).
+- `func writeToDisk(filename: String) throws -> URL` writes PlatformImage to temporary folder. The temporary folder is platform dependent and will bei logged with OSLog. Returns URL to the created file.
+- `func addFrame(frameWidth: CGFloat = 2.0, frameColor: PlatformColor = .red)  -> PlatformImage`adds a rectangle line around the image. The image will not be resize, return image ist frameWidth x 2 wider and higher than the original image.
+- `public func fillFrame(frameColor: PlatformColor = .lightGray)  -> PlatformImage` fills any transparent pixels in the image with frameColor.
 
 ---------------------------------------------------
 # SwiftUI
