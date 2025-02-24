@@ -30,7 +30,7 @@ extension PlatformImage {
         return fileURL
     }
     
-    static func tempDirectory() throws -> URL {
+    public static func tempDirectory() throws -> URL {
         let testDir: URL
         let subDirPath = Bundle.main.bundleIdentifier ?? "main"
         if #available(iOS 16.0, macOS 13.0, *) {
