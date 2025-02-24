@@ -4,6 +4,8 @@
 //
 //  Created by Jean-Nicolas on 22.02.2025.
 //
+// [ChatGPT generated code](https://chatgpt.com/share/67bcdbbd-ec90-8008-b78b-4e4ae15bdbda)
+//
 
 import Foundation
 import OSLog
@@ -18,12 +20,12 @@ import AppKit
 #endif
 
 extension PlatformImage {
-    /// Adds a frame aroind the PlatformImage
+    /// Adds a rectangle line around the image with frameWidth and frameColor.
     ///
-    /// New Image ist frameWidth x 2 (default 4 points) larger and higher than original image.
+    /// - The image will not be resize.
+    /// - Returned image is frameWidth x 2 wider and higher than the original image.
     ///
-    public func addFrame(frameWidth: CGFloat = 2.0,
-                         frameColor: PlatformColor = .red)  -> PlatformImage {
+    public func addFrame(frameWidth: CGFloat = 2.0, frameColor: PlatformColor = .red) -> PlatformImage {
         let imageSize = self.size
         let frameSize = CGSize(width: imageSize.width + frameWidth * 2, height: imageSize.height + frameWidth * 2)
         
@@ -44,27 +46,6 @@ extension PlatformImage {
         UIGraphicsEndImageContext()
 #elseif canImport(AppKit)
         // macOS specific code
-        
-        // Try to extract bitmap representation from the image
-        var bitmapRep: NSBitmapImageRep? = nil
-        for representation in self.representations {
-            if let rep = representation as? NSBitmapImageRep {
-                bitmapRep = rep
-                break
-            }
-        }
-        
-        // Ensure we have a valid bitmap representation
-        guard let validBitmapRep = bitmapRep else {
-            fatalError("Failed to find bitmap representation for NSImage.")
-        }
-        
-        // Now safely obtain a CGImage from the bitmap representation
-        guard let cgImage = validBitmapRep.cgImage else {
-            fatalError("Failed to get CGImage from bitmap representation.")
-        }
-        
-        // Create a new NSImage to draw the frame into
         let imageWithFrame = NSImage(size: frameSize)
         
         // Lock focus to set up a valid graphics context
@@ -79,21 +60,21 @@ extension PlatformImage {
         let frameRect = CGRect(origin: .zero, size: frameSize)
         context.stroke(frameRect)
         
+        // Draw the original image on top of the border
         let imageRect = CGRect(x: frameWidth, y: frameWidth, width: imageSize.width, height: imageSize.height)
-        context.draw(cgImage, in: imageRect)
+        self.draw(in: imageRect)
         
         // Unlock focus to finalize the drawing
         imageWithFrame.unlockFocus()
-#else
-        fatalError("Unsupported platform")
 #endif
+        
         return imageWithFrame
     }
     
-    /// Returns a new image with all transparent pixels replaced by the specified background color.
-    /// - Parameter frameColor: The color to use for the transparent frame background (default is lightGray).
-    /// - Returns: A new PlatformImage with a solid background color.
-    public func fillFrame(frameColor: PlatformColor = .lightGray)  -> PlatformImage {
+    /// Fills any transparent pixels in the image with frameColor.
+    ///
+    /// Works by drawing a rectangle with frameColor and then draw the original image on top of it.
+    public func fillFrame(frameColor: PlatformColor = .lightGray) -> PlatformImage {
 #if canImport(UIKit)
         let rect = CGRect(origin: .zero, size: self.size)
         

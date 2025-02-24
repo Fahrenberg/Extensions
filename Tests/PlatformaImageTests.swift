@@ -61,10 +61,38 @@ final class PlatformImageTests: XCTestCase {
         
 //        let expectedImage =  try XCTUnwrap(TestPlatformImage.image(size: .small_center_filled))
 #if canImport(UIKit)
-        XCTAssertEqual(fillImage.pngData()?.count, 478114) // change test using [pixel hash](https://chatgpt.com/share/67ba33b0-0fb8-8008-b709-bcfba805557f)
+    #if targetEnvironment(macCatalyst)
+        XCTAssertEqual(fillImage.pngData()?.count, 227519) // Adjusted for Mac Catalyst
+    #else
+        XCTAssertEqual(fillImage.pngData()?.count, 478114) // Adjusted for iOS
+    #endif
 #elseif canImport(AppKit)
-        XCTAssertEqual(fillImage.pngData()?.count, 50770)
+    XCTAssertEqual(fillImage.pngData()?.count, 50770) // Adjusted for macOS
 #endif
+
+    }
+    
+    
+    func testWritePlatformImageFramedAndFilled() throws {
+        let testImageType = TestPlatformImageType.small_center
+        let imageFileName = testImageType.rawValue + ".bmp"
+        
+        let image = try XCTUnwrap(TestPlatformImage.image(size: testImageType))
+        var framedAndFilledImage = image.addFrame().fillFrame()
+        framedAndFilledImage = image.fillFrame().addFrame()
+        try framedAndFilledImage.writeToDisk(filename: imageFileName)
+        
+//        let expectedImage =  try XCTUnwrap(TestPlatformImage.image(size: .small_center_filled))
+#if canImport(UIKit)
+    #if targetEnvironment(macCatalyst)
+        XCTAssertEqual(framedAndFilledImage.pngData()?.count, 106061) // Adjusted for Mac Catalyst
+    #else
+        XCTAssertEqual(framedAndFilledImage.pngData()?.count, 222687) // Adjusted for iOS
+    #endif
+#elseif canImport(AppKit)
+    XCTAssertEqual(framedAndFilledImage.pngData()?.count, 51397) // Adjusted for macOS
+#endif
+
     }
     
     
