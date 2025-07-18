@@ -14,16 +14,16 @@
     public typealias PlatformImage = NSImage
 
     extension NSImage {
-        func pngData() -> Data? {
+        public func pngData() -> Data? {
             tiffRepresentation?.bitmap?.png
         }
     }
 
     extension NSBitmapImageRep {
-        var png: Data? { representation(using: .png, properties: [:]) }
+        public var png: Data? { representation(using: .png, properties: [:]) }
     }
     extension Data {
-        var bitmap: NSBitmapImageRep? { NSBitmapImageRep(data: self) }
+        public var bitmap: NSBitmapImageRep? { NSBitmapImageRep(data: self) }
     }
 #endif
 
