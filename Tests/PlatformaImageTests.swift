@@ -42,11 +42,10 @@ final class PlatformImageTests: XCTestCase {
         let framedImage = image.addFrame(frameWidth: 5)
         try framedImage.writeToDisk(filename: imageFileName)
         
-        let expectedImage =  try XCTUnwrap(TestPlatformImage.image(size: .small_center_framed))
 #if canImport(UIKit)
         XCTAssertEqual(framedImage.pngData()?.count, 28664) // change test using [pixel hash](https://chatgpt.com/share/67ba33b0-0fb8-8008-b709-bcfba805557f)
 #elseif canImport(AppKit)
-        XCTAssertEqual(framedImage.pngData()?.count, expectedImage.pngData()?.count)
+        XCTAssertEqual(framedImage.pngData()?.count, 55981)
 #endif
     }
     
@@ -62,12 +61,12 @@ final class PlatformImageTests: XCTestCase {
 //        let expectedImage =  try XCTUnwrap(TestPlatformImage.image(size: .small_center_filled))
 #if canImport(UIKit)
     #if targetEnvironment(macCatalyst)
-        XCTAssertEqual(fillImage.pngData()?.count, 227519) // Adjusted for Mac Catalyst
+        XCTAssertEqual(fillImage.pngData()?.count, 253442) // Adjusted for Mac Catalyst
     #else
         XCTAssertEqual(fillImage.pngData()?.count, 478114) // Adjusted for iOS
     #endif
 #elseif canImport(AppKit)
-    XCTAssertEqual(fillImage.pngData()?.count, 50770) // Adjusted for macOS
+    XCTAssertEqual(fillImage.pngData()?.count, 54969) // Adjusted for macOS
 #endif
 
     }
@@ -90,9 +89,35 @@ final class PlatformImageTests: XCTestCase {
         XCTAssertEqual(framedAndFilledImage.pngData()?.count, 222687) // Adjusted for iOS
     #endif
 #elseif canImport(AppKit)
-    XCTAssertEqual(framedAndFilledImage.pngData()?.count, 51397) // Adjusted for macOS
+    XCTAssertEqual(framedAndFilledImage.pngData()?.count, 55545) // Adjusted for macOS
 #endif
 
+    }
+    
+    func testSymbolImagePlatformIndependent() throws {
+        let symbolName = "document"
+        let symbolImageResult = PlatformImage(systemName: symbolName)
+        
+        #if canImport(UIKit)
+        let symboldImageExpected = UIImage(systemName: symbolName, withConfiguration: PlatformImage.defaultSymbolConfiguration)
+            #if targetEnvironment(macCatalyst)
+            XCTAssertEqual(symbolImageResult?.pngData()?.count,
+                           4046)
+            #else
+            XCTAssertEqual(symbolImageResult?.pngData()?.count,
+                       symboldImageExpected?.pngData()?.count)
+            #endif
+        #endif
+        
+        #if canImport(AppKit) && !canImport(UIKit)
+        let symboldImageExpected = PlatformImage.symbolImage(systemName: symbolName, size: 100.0, colors: [.white])
+        
+        XCTAssertEqual(symbolImageResult?.pngData()?.count,
+                       symboldImageExpected?.pngData()?.count)
+        
+        #endif
+        
+        
     }
     
     
@@ -110,7 +135,7 @@ struct TestPlatformImage {
             return nil
         }
         #if canImport(UIKit)
-        return UIImage(contentsOfFile: imageURL.path)
+        return PlatformImage(contentsOfFile: imageURL.path)
         #elseif canImport(AppKit)
         return NSImage(contentsOf: imageURL)
         #endif

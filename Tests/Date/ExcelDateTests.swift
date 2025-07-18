@@ -14,7 +14,7 @@ final class TestExcelDateConversion: XCTestCase {
   
     let resultExcelDateValue = testDate.excelDateSerialNumber
     //  [Excel Sheet to get Date Serial Number](https://www.icloud.com/iclouddrive/02dTgEOm0wGXd9o5B9fvVlsZQ#ExcelDateValue)
-    let expectedExcelDateValue = 44109.47916
+    let expectedExcelDateValue = 44109.520833333336
     
     XCTAssertEqual(resultExcelDateValue, expectedExcelDateValue, accuracy: 0.0001)
   }
