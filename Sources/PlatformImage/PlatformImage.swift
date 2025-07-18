@@ -50,7 +50,7 @@ extension PlatformImage {
     /// Font size: 100pt
     ///
     /// - Note: for iOS14 defaultSymbolConfiguration without color! Only with systemFont size = 100.0.
-    static var defaultSymbolConfiguration: UIImage.Configuration {
+    public static var defaultSymbolConfiguration: UIImage.Configuration {
         if #available(iOS 15.0, *) {
             // iOS 15+ approach using UIImage.SymbolConfiguration
             var config = UIImage.SymbolConfiguration(paletteColors: [.white])
@@ -75,7 +75,7 @@ extension PlatformImage {
     /// Generates an UIImage for a given SF Symbol with specified size and colors.
     ///
     /// Use this init to ensure Platform independence
-    convenience init?(systemName: String,
+    public convenience init?(systemName: String,
                       size: CGFloat = 100.0,
                       colors: [UIColor] = [.white]) {
         var image: UIImage?
@@ -114,7 +114,7 @@ extension PlatformImage {
 #if canImport(AppKit) && !canImport(UIKit)
 extension PlatformImage {
     /// Generates an NSImage for a given SF Symbol with specified size and colors.
-    static func symbolImage(systemName: String,
+    public static func symbolImage(systemName: String,
                             size: CGFloat,
                             colors: [NSColor]) -> NSImage? {
         guard let image = NSImage(systemSymbolName: systemName, accessibilityDescription: nil) else {
@@ -135,7 +135,7 @@ extension PlatformImage {
         return resizedImage
     }
     /// Convenience initializer to create an NSImage from a system symbol name with default size and colors.
-    convenience init?(systemName: String,
+    public convenience init?(systemName: String,
                       size: CGFloat = 100.0,
                       colors: [NSColor] = [.white]) {
         guard let symbolImage = NSImage.symbolImage(systemName: systemName, size: size, colors: colors) else {
