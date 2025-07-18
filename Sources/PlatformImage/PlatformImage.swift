@@ -112,7 +112,7 @@ extension PlatformImage {
 
 //MARK: macOS specific code
 #if canImport(AppKit) && !canImport(UIKit)
-extension NSImage {
+extension PlatformImage {
     /// Generates an NSImage for a given SF Symbol with specified size and colors.
     static func symbolImage(systemName: String,
                             size: CGFloat,

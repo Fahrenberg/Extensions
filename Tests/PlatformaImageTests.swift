@@ -96,7 +96,7 @@ final class PlatformImageTests: XCTestCase {
     
     func testSymbolImagePlatformIndependent() throws {
         let symbolName = "document"
-        let symbolImageResult = PlatformImage(systemName: symbolName)
+        let symbolImageResult = Extensions.PlatformImage(systemName: symbolName)
         
         #if canImport(UIKit)
         let symboldImageExpected = UIImage(systemName: symbolName, withConfiguration: PlatformImage.defaultSymbolConfiguration)
@@ -117,6 +117,10 @@ final class PlatformImageTests: XCTestCase {
         
         #endif
         
+        
+    }
+    
+    func testSystemNamePlatformIndependent() throws {
         
     }
     
