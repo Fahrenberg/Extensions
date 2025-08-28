@@ -15,6 +15,8 @@ import OSLog
 // Testing PlatformColor Extensions
 final class PlatformImageTests: XCTestCase {
     
+    let symbolName = "square.and.arrow.up" // available from version 1.0
+    
     override func setUpWithError() throws {
         let tmpDir = try PlatformImage.tempDirectory()
         FileManager.deleteAllFiles(directoryURL: tmpDir)  // reset
@@ -95,7 +97,6 @@ final class PlatformImageTests: XCTestCase {
     }
     
     func testSymbolImagePlatformIndependent() throws {
-        let symbolName = "document"
         let symbolImageResult = Extensions.PlatformImage(systemName: symbolName)
         
         #if canImport(UIKit)
@@ -120,11 +121,47 @@ final class PlatformImageTests: XCTestCase {
         
     }
     
-    func testSystemNamePlatformIndependent() throws {
+    func testSymbolImageSizePlatformAndDeviceIndependent() throws {
+        let symbolSize =  try XCTUnwrap(PlatformImage(systemName: symbolName)?.pngData())
+        let platformInfo = currentPlatformDescription()
+        let logMessage = "Platform: \(platformInfo): - size \(symbolSize)"
+        Logger.test.debug("\(logMessage)")
         
+        /* will never produce same data size  for all platforms, devices
+         Platform: iOS (iPhone 16 Pro Simulator (iOS 18.6)): - size 4332 bytes
+         Platform: iOS (iPhone 15 Pro Max Simulator (iOS 17.5)): - size 4371 bytes
+         Platform: macOS (Device): - size 23343 bytes
+         
+         */
     }
     
     
+}
+
+/// Returns a formatted string describing the current platform and environment (simulator or device)
+func currentPlatformDescription() -> String {
+    #if os(iOS)
+    let platform = "iOS"
+    #elseif os(macOS)
+    let platform = "macOS"
+    #else
+    let platform = "Unknown"
+    #endif
+    
+    let environment: String
+    #if targetEnvironment(simulator)
+    #if os(iOS)
+    let deviceName = ProcessInfo.processInfo.environment["SIMULATOR_DEVICE_NAME"] ?? "Unknown iPhone"
+    let systemVersion = UIDevice.current.systemVersion
+    environment = "\(deviceName) Simulator (iOS \(systemVersion))"
+    #else
+    environment = "Simulator"
+    #endif
+    #else
+    environment = "Device"
+    #endif
+    
+    return "\(platform) (\(environment))"
 }
 
 
@@ -144,4 +181,10 @@ struct TestPlatformImage {
         return NSImage(contentsOf: imageURL)
         #endif
     }
+}
+
+
+
+extension Logger {
+    fileprivate static let test = Logger(subsystem: subsystem, category: "PlatformImageTests")
 }
