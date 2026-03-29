@@ -57,6 +57,7 @@
 - fileExists(file: URL) -> Bool
 - documentDirectory() -> URL
 - cloudDirectory() -> URL
+- isProtectedDirectory(_ directory: URL) -> Bool
 - createDirectory(directory: URL) throws
 - deleteAllFiles(directoryURL: URL = FileManager.documentDirectory()) -> Int
 - countFiles(directoryURL: URL) -> Int

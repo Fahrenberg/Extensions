@@ -155,6 +155,24 @@ extension FileManager {
     }
 }
 
+extension FileManager {
+    /// Checks if the provided URL is a protected system directory (such as Documents, temporary, or Downloads).
+    ///
+    /// - Parameter directory: The URL to check.
+    /// - Returns: `true` if the directory is a system-protected directory; otherwise, `false`.
+    public func isProtectedDirectory(_ directory: URL) -> Bool {
+        let protectedDirectories: [URL] = [
+            self.urls(for: .documentDirectory, in: .userDomainMask).first!,
+            self.temporaryDirectory,
+            self.urls(for: .downloadsDirectory, in: .userDomainMask).first!
+        ]
+        let standardized = directory.standardizedFileURL
+        return protectedDirectories.contains(where: { $0.standardizedFileURL == standardized })
+    }
+}
+
+
+
 extension Logger {
     fileprivate static let fileManager = Logger(subsystem: subsystem, category: "FileManager")
 }
