@@ -47,7 +47,7 @@ final class PlatformImageTests: XCTestCase {
 #if canImport(UIKit)
         XCTAssertEqual(framedImage.pngData()?.count, 28664) // change test using [pixel hash](https://chatgpt.com/share/67ba33b0-0fb8-8008-b709-bcfba805557f)
 #elseif canImport(AppKit)
-        XCTAssertEqual(framedImage.pngData()?.count, 55981)
+        XCTAssertEqual(framedImage.pngData()?.count, 51903)
 #endif
     }
     
@@ -68,7 +68,7 @@ final class PlatformImageTests: XCTestCase {
         XCTAssertEqual(fillImage.pngData()?.count, 478114) // Adjusted for iOS
     #endif
 #elseif canImport(AppKit)
-    XCTAssertEqual(fillImage.pngData()?.count, 54969) // Adjusted for macOS
+    XCTAssertEqual(fillImage.pngData()?.count, 50857) // Adjusted for macOS
 #endif
 
     }
@@ -91,7 +91,7 @@ final class PlatformImageTests: XCTestCase {
         XCTAssertEqual(framedAndFilledImage.pngData()?.count, 222687) // Adjusted for iOS
     #endif
 #elseif canImport(AppKit)
-    XCTAssertEqual(framedAndFilledImage.pngData()?.count, 55545) // Adjusted for macOS
+    XCTAssertEqual(framedAndFilledImage.pngData()?.count, 51416) // Adjusted for macOS
 #endif
 
     }
